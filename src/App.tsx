@@ -9,6 +9,8 @@ import { Patient } from "./types";
 
 import PatientListPage from "./PatientListPage";
 
+// tästä se lähtee
+
 const App = () => {
   const [, dispatch] = useStateValue();
   React.useEffect(() => {
