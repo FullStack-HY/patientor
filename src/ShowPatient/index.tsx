@@ -2,8 +2,8 @@
 import React, { useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import { Container } from "semantic-ui-react";
-import { Patient } from "../types";
+import { Container, Icon } from "semantic-ui-react";
+import { Patient} from "../types";
 import { apiBaseUrl } from "../constants";
 import { useStateValue, updatePatient } from "../state";
 import { toPatient } from "../utils";
@@ -44,12 +44,24 @@ const ShowPatient = () => {
         }
     }, [id, dispatch]);
 
+    const showGender = () => {
+        if(patient.gender === "male") {
+            return <Icon name="mars"></Icon>;
+        }
+        if(patient.gender === "female") {
+            return <Icon name="venus"></Icon>;
+        }
+        if(patient.gender === "other") {
+            return <Icon name="transgender"></Icon>;
+        }
+    };
+
     return (
         <div>
             <Container textAlign="center">
                 <h3>Patient info</h3>
             </Container>
-            <h4>{patient.name} </h4>
+            <h3>{patient.name} {showGender()}</h3>
             <div><strong>SSN:</strong> {patient.ssn}</div>
             <div><strong>Date of Birth:</strong> {patient.dateOfBirth} </div>
             <div><strong>Occupation:</strong> {patient.occupation}</div>
