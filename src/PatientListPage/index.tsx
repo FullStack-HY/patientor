@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
+import { Link } from 'react-router-dom';
 import { Container, Table, Button } from "semantic-ui-react";
-
 import { PatientFormValues } from "../AddPatientModal/AddPatientForm";
 import AddPatientModal from "../AddPatientModal";
 import { Patient } from "../types";
@@ -58,6 +58,13 @@ const PatientListPage = () => {
               <Table.Cell>{patient.occupation}</Table.Cell>
               <Table.Cell>
                 <HealthRatingBar showText={false} rating={1} />
+              </Table.Cell>
+              <Table.Cell>
+                <Link to={`/patients/${patient.id}`}>
+                  <Button>
+                    <p>Show Patient</p>
+                  </Button>
+                </Link>
               </Table.Cell>
             </Table.Row>
           ))}

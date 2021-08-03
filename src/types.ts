@@ -10,6 +10,7 @@ export enum Gender {
   Other = "other"
 }
 
+
 export interface Patient {
   id: string;
   name: string;
