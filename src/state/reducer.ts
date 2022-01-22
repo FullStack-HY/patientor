@@ -9,7 +9,11 @@ export type Action =
   | {
       type: "ADD_PATIENT";
       payload: Patient;
-    };
+    }
+  | {
+      type: "ADD_SENSITIVE_PATIENT";
+      payload: Patient;
+  };
 
 export const reducer = (state: State, action: Action): State => {
   switch (action.type) {
@@ -32,6 +36,18 @@ export const reducer = (state: State, action: Action): State => {
           [action.payload.id]: action.payload
         }
       };
+
+    //TODO Since we now have the state in the context, you'll need to define a new action type for updating an individual patient's data.
+
+    case "ADD_SENSITIVE_PATIENT":
+      return {
+        ...state,
+        sensitivePatients: {
+          ...state.sensitivePatients,
+          [action.payload.id]: action.payload
+        }
+      };
+    
     default:
       return state;
   }
