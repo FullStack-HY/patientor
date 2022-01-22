@@ -7,7 +7,7 @@ import {
 
 import { Patient } from "../types";
 import { apiBaseUrl } from "../constants";
-import { useStateValue } from "../state";
+import { useStateValue, addSensitivePatient } from "../state";
 
 const PatientInfoPage = () => {
 
@@ -23,7 +23,7 @@ const PatientInfoPage = () => {
           const { data: sensitivePatient } = await axios.get<Patient>(
             `${apiBaseUrl}/patients/${id}`
           );
-          dispatch({ type: "ADD_SENSITIVE_PATIENT", payload: sensitivePatient });
+          dispatch(addSensitivePatient(sensitivePatient));
         } catch (e) {
           console.error(e);
         }
