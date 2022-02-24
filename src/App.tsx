@@ -1,14 +1,13 @@
 import React from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
-import { Button, Divider, Container } from "@material-ui/core";
+import { Button, Divider, Container, Typography } from "@mui/material";
 
 import { apiBaseUrl } from "./constants";
 import { useStateValue } from "./state";
 import { Patient } from "./types";
 
 import PatientListPage from "./PatientListPage";
-import { Typography } from "@material-ui/core";
 
 const App = () => {
   const [, dispatch] = useStateValue();
