@@ -1,6 +1,5 @@
 import React from "react";
 import { Rating } from "@mui/lab";
-import { makeStyles } from '@mui/styles'; 
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
 type BarProps = {
@@ -8,14 +7,6 @@ type BarProps = {
   showText: boolean;
 };
 
-const useStyles = makeStyles({root:{
-  iconFilled: {
-    color: "#ff6d75",
-  },
-  iconHover: {
-    color: "#ff3d47",
-  },
-}});
 
 const HEALTHBAR_TEXTS = [
   "The patient is in great shape",
@@ -29,11 +20,11 @@ const HealthRatingBar = ({ rating, showText }: BarProps) => {
   return (
     <div className="health-bar">
       <Rating
-        className={classes.root}
         readOnly
         value={4 - rating}
         max={4}
-        icon={<FavoriteIcon fontSize="inherit" />}
+        icon={<Favorite htmlColor="red" fontSize="inherit" />}
+        emptyIcon={<Favorite color="disabled" fontSize="small" />}
       />
 
       {showText ? <p>{HEALTHBAR_TEXTS[rating]}</p> : null}
